@@ -16,7 +16,7 @@ export const token = checkValue(
   "https://sanity.io"
 );
 
-export const hookSecret = process.env.NEXT_PUBLIC_SANITY_HOOK_SECRET;
+// export const hookSecret = process.env.NEXT_PUBLIC_SANITY_HOOK_SECRET;
 export const mode = process.env.NODE_ENV;
 
 export const apiVersion =
@@ -34,11 +34,11 @@ export const giscusCategoryId = checkValue(
   "https://giscus.app/"
 );
 
-export const umamiSiteId = checkValue(
-  process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID,
-  "NEXT_PUBLIC_UMAMI_WEBSITE_ID",
-  "https://umami.is"
-);
+// export const umamiSiteId = checkValue(
+//   process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID,
+//   "NEXT_PUBLIC_UMAMI_WEBSITE_ID",
+//   "https://umami.is"
+// );
 
 // Validate env varaibles
 function checkValue<T>(
