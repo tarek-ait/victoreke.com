@@ -7,16 +7,28 @@ const images = [
   // update this with the images in the drive
   {
     id: "1",
-    src: "https://images.unsplash.com/photo-1585618256754-241cfe4e8113?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=100",
+    src: "https://drive.google.com/uc?export=view&id=1FismgrvbTlJtYHPR58zLj4gM7THpc5Li",
   },
   {
     id: "2",
-    src: "https://images.unsplash.com/photo-1585619203238-70e7631cc672?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwcm9maWxlLXBhZ2V8OXx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
+    src: "https://drive.google.com/uc?export=view&id=1HhNzaIY9S6uW4dUiTwtY6nkYtcHaznhX",
   },
   {
     id: "3",
-    src: "https://images.unsplash.com/photo-1585619443911-c2bb23fb2a49?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80",
+    src: "https://drive.google.com/uc?export=view&id=1yZz611fWGy4zMC7BFLKvbqsx3qmbhOfD",
   },
+  {
+    id: "4",
+    src: "https://drive.google.com/uc?export=view&id=1H_Rr-WDkxMgeS2KryWRFw3tdlpGpgC15",
+  },
+  {
+    id: "5",
+    src: "https://drive.google.com/uc?export=view&id=10iRxuBihvKeiE46eajknd7kOi14mLm46",
+  },
+  {
+    id: "6",
+    src: "https://drive.google.com/uc?export=view&id=1FDq3XUx0_XfZ4ZGGuAVwcpB68tuhAMLl",
+  }
 ];
 
 export const metadata: Metadata = {
@@ -52,6 +64,10 @@ export default function Photos() {
             />
           ))}
         </Slide>
+        <figcaption className="text-center text-sm text-gray-500 mt-2">
+          Photos taken by Tarek Ait Ahmed, check my instagram <span><a href="https://www.instagram.com/milquetoast77/">account</a></span> for more
+          
+        </figcaption>
       </figure>
     </main>
   );
