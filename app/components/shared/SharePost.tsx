@@ -11,34 +11,46 @@ type props = {
   title: string;
   slug: string;
   description: string;
+  baseUrl?: string;
+  shareTitle?: string;
+  twitterText?: string;
+  whatsappText?: string;
 };
 
-export default function SharePost({ title, slug, description }: props) {
-  const blog = encodeURIComponent("https://victoreke.com/blog/");
+export default function SharePost({
+  title,
+  slug,
+  description,
+  baseUrl = "https://victoreke.com/blog/",
+  shareTitle = "Share Post",
+  twitterText = "Thank you @victoreke for writing this post.",
+  whatsappText = "Read this amazing article by Victor Eke",
+}: props) {
+  const shareUrl = encodeURIComponent(`${baseUrl}${slug}`);
   const options = [
     {
       icon: BiLogoTwitter,
       name: "Twitter",
       shareUrl: `https://twitter.com/intent/tweet?text=${encodeURIComponent(
-        "Thank you @victoreke for writing this post."
-      )}.%0A%0A${title}%0A%0A${blog}${slug}`,
+        twitterText
+      )}.%0A%0A${title}%0A%0A${shareUrl}`,
     },
     {
       icon: BiLogoLinkedinSquare,
       name: "LinkedIn",
-      shareUrl: `https://linkedin.com/sharing/share-offsite/?url=${blog}${slug}&title=${title}&summary=${description}`,
+      shareUrl: `https://linkedin.com/sharing/share-offsite/?url=${shareUrl}&title=${title}&summary=${description}`,
     },
     {
       icon: BiLogoFacebookSquare,
       name: "Facebook",
-      shareUrl: `https://www.facebook.com/sharer/sharer.php?u=${blog}${slug}`,
+      shareUrl: `https://www.facebook.com/sharer/sharer.php?u=${shareUrl}`,
     },
     {
       icon: BiLogoWhatsapp,
       name: "WhatsApp",
       shareUrl: `https://api.whatsapp.com/send?text=${encodeURIComponent(
-        "Read this amazing article by Victor Eke"
-      )}.%0A%0A${title}%0A%0A${blog}${slug}`,
+        whatsappText
+      )}.%0A%0A${title}%0A%0A${shareUrl}`,
     },
   ];
 
@@ -52,7 +64,9 @@ export default function SharePost({ title, slug, description }: props) {
 
   return (
     <section className="border-b dark:border-zinc-800 border-zinc-200 pb-10">
-      <h3 className="text-xl font-semibold tracking-tight mb-4">Share Post</h3>
+      <h3 className="text-xl font-semibold tracking-tight mb-4">
+        {shareTitle}
+      </h3>
 
       <div className="flex flex-wrap items-center gap-2 tracking-tight">
         {options.map((data, id) => (

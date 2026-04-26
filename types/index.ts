@@ -62,6 +62,28 @@ export type ProjectType = {
   description: PortableTextBlock[];
 };
 
+export type CertificateType = {
+  _id: string;
+  _createdAt: string;
+  _updatedAt?: string;
+  title: string;
+  slug: string;
+  description: string;
+  issuer: string;
+  issueDate: string;
+  expiryDate?: string;
+  credentialId?: string;
+  credentialUrl?: string;
+  logo?: string;
+  coverImage?: {
+    image: string;
+    alt: string | null;
+    lqip: string;
+  };
+  tags?: string[];
+  body?: PortableTextBlock[];
+};
+
 export type PostType = {
   _id: string;
   _createdAt: string;
@@ -85,6 +107,29 @@ export type PostType = {
     };
     twitterUrl: string;
   };
+  body: PortableTextBlock[];
+  featured: boolean;
+  isPublished: boolean;
+};
+
+export type CTFWriteupType = {
+  _id: string;
+  _createdAt: string;
+  _updatedAt?: string;
+  title: string;
+  slug: string;
+  description: string;
+  date?: string;
+  coverImage?: {
+    image: string;
+    lqip: string;
+    alt: string | null;
+  };
+  platform: string;
+  category: string;
+  difficulty?: string;
+  points?: number;
+  tags: string[];
   body: PortableTextBlock[];
   featured: boolean;
   isPublished: boolean;

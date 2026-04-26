@@ -4,10 +4,12 @@ import Image from "next/image";
 import { useState } from "react";
 import { RxHamburgerMenu } from "react-icons/rx";
 import {
+  HiAcademicCap,
   HiBeaker,
   HiBookmarkAlt,
   HiCamera,
   HiOutlineX,
+  HiTerminal,
   HiUser,
 } from "react-icons/hi";
 import Logo from "../../../public/logo.png";
@@ -26,9 +28,19 @@ export default function MobileMenu() {
       icon: HiBeaker,
     },
     {
+      title: "Certificates",
+      href: "/certificates",
+      icon: HiAcademicCap,
+    },
+    {
       title: "Blog",
       href: "/blog",
       icon: HiBookmarkAlt,
+    },
+    {
+      title: "CTF Writeups",
+      href: "/ctf-writeups",
+      icon: HiTerminal,
     },
     {
       title: "Photos",

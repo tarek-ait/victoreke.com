@@ -16,8 +16,16 @@ export default function Navbar() {
       href: "/projects",
     },
     {
+      title: "Certificates",
+      href: "/certificates",
+    },
+    {
       title: "Blog",
       href: "/blog",
+    },
+    {
+      title: "CTF Writeups",
+      href: "/ctf-writeups",
     },
     {
       title: "Photos",

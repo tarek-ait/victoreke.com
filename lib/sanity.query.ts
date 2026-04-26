@@ -16,6 +16,47 @@ const postField = groq`
   isPublished
 `;
 
+const certificateField = groq`
+  _id,
+  _createdAt,
+  title,
+  "slug": slug.current,
+  description,
+  issuer,
+  issueDate,
+  expiryDate,
+  credentialId,
+  credentialUrl,
+  "logo": logo.asset->url,
+  coverImage {
+    "image": asset->url,
+    "lqip": asset->metadata.lqip,
+    alt,
+  },
+  tags
+`;
+
+const ctfWriteupField = groq`
+  _id,
+  _createdAt,
+  title,
+  "slug": slug.current,
+  description,
+  date,
+  coverImage {
+    "image": asset->url,
+    "lqip": asset->metadata.lqip,
+    alt,
+  },
+  platform,
+  category,
+  difficulty,
+  points,
+  tags,
+  featured,
+  isPublished
+`;
+
 export const profileQuery = groq`*[_type == "profile"][0]{
   _id,
   fullName,
@@ -67,6 +108,16 @@ export const singleProjectQuery = groq`*[_type == "project" && slug.current == $
   description
 }`;
 
+export const certificatesQuery = groq`*[_type == "certificate"] | order(issueDate desc, _createdAt desc){
+  ${certificateField}
+}`;
+
+export const singleCertificateQuery = groq`*[_type == "certificate" && slug.current == $slug][0]{
+  ${certificateField},
+  _updatedAt,
+  body
+}`;
+
 export const postsQuery = groq`*[_type == "Post"] | order(_createdAt desc){
   ${postField},
   date,
@@ -96,6 +147,21 @@ export const singlePostQuery = groq`*[_type == "Post" && slug.current == $slug][
     }, 
     twitterUrl
   },
+  body,
+}`;
+
+export const ctfWriteupsQuery = groq`*[_type == "ctfWriteup"] | order(date desc, _createdAt desc){
+  ${ctfWriteupField},
+  body,
+}`;
+
+export const featuredCTFWriteupsQuery = groq`*[_type == "ctfWriteup" && featured == true && isPublished == true] | order(date desc, _createdAt desc){
+  ${ctfWriteupField},
+}`;
+
+export const singleCTFWriteupQuery = groq`*[_type == "ctfWriteup" && slug.current == $slug][0]{
+  ${ctfWriteupField},
+  _updatedAt,
   body,
 }`;
 
