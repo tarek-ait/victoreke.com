@@ -1,6 +1,3 @@
-/** @type {import('next').NextConfig} */
-const nextConfig = {};
-
 module.exports = {
   images: {
     remotePatterns: [
@@ -14,6 +11,8 @@ module.exports = {
       { hostname: "www.google.com" },
       { hostname: "images.unsplash.com" },
       { hostname: "drive.google.com" },
+      { hostname: "images.credly.com" },
+      { hostname: "cdn.credly.com" },
     ],
   },
 };

@@ -16,26 +16,6 @@ const postField = groq`
   isPublished
 `;
 
-const certificateField = groq`
-  _id,
-  _createdAt,
-  title,
-  "slug": slug.current,
-  description,
-  issuer,
-  issueDate,
-  expiryDate,
-  credentialId,
-  credentialUrl,
-  "logo": logo.asset->url,
-  coverImage {
-    "image": asset->url,
-    "lqip": asset->metadata.lqip,
-    alt,
-  },
-  tags
-`;
-
 const ctfWriteupField = groq`
   _id,
   _createdAt,
@@ -106,16 +86,6 @@ export const singleProjectQuery = groq`*[_type == "project" && slug.current == $
   },
   tagline,
   description
-}`;
-
-export const certificatesQuery = groq`*[_type == "certificate"] | order(issueDate desc, _createdAt desc){
-  ${certificateField}
-}`;
-
-export const singleCertificateQuery = groq`*[_type == "certificate" && slug.current == $slug][0]{
-  ${certificateField},
-  _updatedAt,
-  body
 }`;
 
 export const postsQuery = groq`*[_type == "Post"] | order(_createdAt desc){

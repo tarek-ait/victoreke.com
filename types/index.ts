@@ -62,26 +62,71 @@ export type ProjectType = {
   description: PortableTextBlock[];
 };
 
-export type CertificateType = {
-  _id: string;
-  _createdAt: string;
-  _updatedAt?: string;
+export type CredlySkill = {
+  id: string;
+  name: string;
+  vanitySlug: string;
+  canonical: boolean;
+  faethmId: string | null;
+};
+
+export type CredlySkillSummary = CredlySkill & {
+  badgeCount: number;
+  evidenceCount: number | null;
+  hasBadge: boolean;
+  inDemand: boolean;
+  futureProof: boolean;
+  trending: boolean;
+};
+
+export type CredlyBadgeActivity = {
+  id: string;
+  activityType: string;
   title: string;
-  slug: string;
+  url: string | null;
+};
+
+export type CredlyRelatedBadge = {
+  id: string;
+  name: string;
+  imageUrl: string;
+  updatedAt: string | null;
+  url: string;
+};
+
+export type CredlyBadgeListItem = {
+  id: string;
+  title: string;
   description: string;
-  issuer: string;
-  issueDate: string;
-  expiryDate?: string;
-  credentialId?: string;
-  credentialUrl?: string;
-  logo?: string;
-  coverImage?: {
-    image: string;
-    alt: string | null;
-    lqip: string;
-  };
-  tags?: string[];
-  body?: PortableTextBlock[];
+  issuedAtDate: string;
+  expiresAtDate: string | null;
+  issuedTo: string;
+  issuerName: string;
+  issuerUrl: string | null;
+  issuerTwitterUrl: string | null;
+  imageUrl: string;
+  badgeTemplateUrl: string | null;
+  verifyUrl: string;
+  learnMoreUrl: string | null;
+  typeCategory: string | null;
+  level: string | null;
+  printable: boolean;
+  public: boolean;
+  state: string;
+  skills: CredlySkill[];
+};
+
+export type CredlyBadge = CredlyBadgeListItem & {
+  criteria: CredlyBadgeActivity[];
+  relatedBadges: CredlyRelatedBadge[];
+};
+
+export type CredlyProfile = {
+  userId: string;
+  displayName: string;
+  publicProfileUrl: string;
+  badgesPageUrl: string;
+  badgeCount: number;
 };
 
 export type PostType = {
